@@ -3,5 +3,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@* Nav bars *@
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#firstTab">View All</a></li>
+    <li><a data-toggle="tab" href="#secondTab">Add New</a></li>
+</ul>
 
+
+@* Nav bar content *@
+
+<div class="tab-content">
+    <div id="firstTab" class="tab-pane fade in active">Tab 1 Content</div>
+    <div id="secondTab" class="tab-pane fade in">Tab 2 Content</div>
+</div>
