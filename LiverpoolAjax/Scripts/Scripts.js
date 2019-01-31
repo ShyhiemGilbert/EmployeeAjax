@@ -18,9 +18,9 @@ function jQueryAjaxPost(form) {
             type: 'POST',
             url: form.action,
             data: new FormData(form),
-            
             success: function(response) {
                 $("#firstTab").html(response);
+                refreshAddNewTab($(form).attr('data-restUrl'), true);
 
             }
         }
@@ -33,3 +33,17 @@ function jQueryAjaxPost(form) {
     return false;
 }
 //For  client side validation End
+
+function refreshAddNewTab(resetUrl, showViewTab) {
+    $.ajax
+    ({
+        type: 'GET',
+        url: resetUrl,
+        success: function(response) {
+            $("#secondTab").html(response);
+            $('ul.nav.nav-tabs a:eq(1)').html('Add New');
+            if (showViewTab)
+                $('ul.nav.nav-tabs a:eq(0)').tab('show');
+        }
+    });
+}
