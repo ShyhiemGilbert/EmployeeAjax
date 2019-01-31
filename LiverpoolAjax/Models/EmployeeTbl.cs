@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 namespace LiverpoolAjax.Models
 {
@@ -18,6 +19,7 @@ namespace LiverpoolAjax.Models
 	public partial class EmployeeTbl
 	{
 		public int EmployeeId { get; set; }
+		[Required(ErrorMessage = "Employee name is required.")]
 		public string Name { get; set; }
 		public string Position { get; set; }
 		public string Office { get; set; }

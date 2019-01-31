@@ -16,3 +16,8 @@
     <div id="firstTab" class="tab-pane fade in active">@Html.Action("ViewAll")</div>
     <div id="secondTab" class="tab-pane fade in">@Html.Action("AddOrEdit")</div>
 </div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

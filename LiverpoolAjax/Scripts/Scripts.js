@@ -9,3 +9,22 @@ function ShowImagePreview(imageUploader, previewImage) {
     }
 }
 //For Image Preview End
+
+//For  client side validation
+function jQueryAjaxPost(form) {
+    $.validator.unobtrusive.parse(form);
+    if ($(form).valid()) {
+        $.ajax({
+            type: 'POST',
+            url: form.action,
+            data: new FormData(form),
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                $("#firstTab").html(response);
+            }
+        });
+    }
+    return false;
+}
+//For  client side validation End

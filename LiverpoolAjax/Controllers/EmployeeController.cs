@@ -37,7 +37,7 @@ namespace LiverpoolAjax.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit2(EmployeeTbl emp)
+		public ActionResult AddOrEdit()
 		{
 			return View();
 		}
