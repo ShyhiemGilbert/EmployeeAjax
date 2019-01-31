@@ -40,22 +40,32 @@ namespace LiverpoolAjax.Controllers
 		[HttpPost]
 		public ActionResult AddOrEdit(EmployeeTbl emp)
 		{
-			if (emp.ImageUpload != null)
+			try
 			{
-				string fileName = Path.GetFileNameWithoutExtension(emp.ImageUpload.FileName);
-				string extention = Path.GetExtension(emp.ImageUpload.FileName);
-				fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
-				emp.Image = "~/AppFiles/Images/" + fileName;
-				emp.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/AppFiles/Images/"),fileName));
-			}
+				if (emp.ImageUpload != null)
+				{
+					string fileName = Path.GetFileNameWithoutExtension(emp.ImageUpload.FileName);
+					string extention = Path.GetExtension(emp.ImageUpload.FileName);
+					fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+					emp.Image = "~/AppFiles/Images/" + fileName;
+					emp.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/AppFiles/Images/"), fileName));
+				}
 
-			using (EmployeesEntities db = new EmployeesEntities())
+				using (EmployeesEntities db = new EmployeesEntities())
+				{
+					db.EmployeeTbls.Add(emp);
+					db.SaveChanges();
+				}
+
+				return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = "Submitted Successfully" },
+					JsonRequestBehavior.AllowGet);
+			}
+			catch (Exception ex)
 			{
-				db.EmployeeTbls.Add(emp);
-				db.SaveChanges();
-			}
 
-			return RedirectToAction("ViewAll");
+				return Json(new { success = false, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = ex.Message },
+					JsonRequestBehavior.AllowGet);
+			}
 		}
 	}
 }
