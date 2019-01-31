@@ -64,21 +64,21 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <img src="@Url.Content(Model.Image)" style="margin:20px" height="200" width="200" id="imagePreview"/>
-                        <input type="file" name="ImageUpload" accept="image/jpeg, image/png"/>
-                    </div>
+                        <input type="file" name="ImageUpload"  )a )ccept="image/jpeg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview') )"/>
+                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Submit" class="btn btn-default" />
                 </div>
             </div>
         </div>

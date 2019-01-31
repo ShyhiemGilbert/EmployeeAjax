@@ -6,6 +6,8 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using System.ComponentModel;
 using System.Web;
 namespace LiverpoolAjax.Models
 {
@@ -14,14 +16,16 @@ namespace LiverpoolAjax.Models
 	using System.ComponentModel.DataAnnotations.Schema;
 
 	public partial class EmployeeTbl
-    {
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Position { get; set; }
-        public string Office { get; set; }
-        public Nullable<int> Salary { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
-        public string Image { get; set; }
+	{
+		public int EmployeeId { get; set; }
+		public string Name { get; set; }
+		public string Position { get; set; }
+		public string Office { get; set; }
+		public Nullable<int> Salary { get; set; }
+
+		[DisplayName("Date Of Birth")]
+		public Nullable<System.DateTime> DateOfBirth { get; set; }
+		public string Image { get; set; }
 
 		[NotMapped]
 		public HttpPostedFileBase ImageUpload { get; set; }
