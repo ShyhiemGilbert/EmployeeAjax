@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,9 +38,24 @@ namespace LiverpoolAjax.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit()
+		public ActionResult AddOrEdit(EmployeeTbl emp)
 		{
-			return View();
+			if (emp.ImageUpload != null)
+			{
+				string fileName = Path.GetFileNameWithoutExtension(emp.ImageUpload.FileName);
+				string extention = Path.GetExtension(emp.ImageUpload.FileName);
+				fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+				emp.Image = "~/AppFiles/Images/" + fileName;
+				emp.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/AppFiles/Images/"),fileName));
+			}
+
+			using (EmployeesEntities db = new EmployeesEntities())
+			{
+				db.EmployeeTbls.Add(emp);
+				db.SaveChanges();
+			}
+
+			return RedirectToAction("ViewAll");
 		}
 	}
 }
