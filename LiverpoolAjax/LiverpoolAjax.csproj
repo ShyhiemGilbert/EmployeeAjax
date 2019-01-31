@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppFiles\Images\DefaultPerson.png" />
     <Content Include="App_Data\Employees.mdf" />
     <Content Include="App_Data\Employees_log.ldf">
       <DependentUpon>Employees.mdf</DependentUpon>
@@ -209,6 +210,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\ViewAll.cshtml" />
+    <Content Include="Views\Employee\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

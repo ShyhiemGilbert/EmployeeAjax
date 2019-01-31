@@ -29,5 +29,17 @@ namespace LiverpoolAjax.Controllers
 			}
 
 		}
-    }
+
+		public ActionResult AddOrEdit(int id = 0)
+		{
+			EmployeeTbl emp = new EmployeeTbl();
+			return View(emp);
+		}
+
+		[HttpPost]
+		public ActionResult AddOrEdit2(EmployeeTbl emp)
+		{
+			return View();
+		}
+	}
 }
