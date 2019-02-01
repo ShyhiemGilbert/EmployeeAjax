@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -60,8 +61,16 @@ namespace LiverpoolAjax.Controllers
 
 				using (EmployeesEntities db = new EmployeesEntities())
 				{
-					db.EmployeeTbls.Add(emp);
-					db.SaveChanges();
+					if (emp.EmployeeId == 0)
+					{
+						db.EmployeeTbls.Add(emp);
+						db.SaveChanges();
+					}
+					else
+					{
+						db.Entry(emp).State = EntityState.Modified;
+						db.SaveChanges();
+					}
 				}
 
 				return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = "Submitted Successfully" },
