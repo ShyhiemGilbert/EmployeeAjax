@@ -80,6 +80,10 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Submit" class="btn btn-default" />
+                    @if (Model.EmployeeId != 0)
+                    {
+                        <a class="btn btn-success" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","Employee", new {id=0})',false)"><i class="fa fa-plus"> Add New</i></a>
+                    }
                 </div>
             </div>
         </div>
