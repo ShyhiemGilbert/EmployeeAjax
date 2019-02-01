@@ -82,6 +82,28 @@ namespace LiverpoolAjax.Controllers
 				return Json(new { success = false, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = ex.Message },
 					JsonRequestBehavior.AllowGet);
 			}
+
+		}
+
+		public ActionResult Delete(int id)
+		{
+			try
+			{
+				using (EmployeesEntities db = new EmployeesEntities())
+				{
+					EmployeeTbl emp = db.EmployeeTbls.Where(x => x.EmployeeId == id).FirstOrDefault < EmployeeTbl();
+					db.EmployeeTbls.Remove(emp);
+					db.SaveChanges();
+				}
+
+				return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = "Deleted Successfully" },
+					JsonRequestBehavior.AllowGet);
+			}
+			catch (Exception ex)
+			{
+				return Json(new { success = false, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployee()), message = ex.Message },
+					JsonRequestBehavior.AllowGet);
+			}
 		}
 	}
 }
