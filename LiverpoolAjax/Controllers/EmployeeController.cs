@@ -91,7 +91,7 @@ namespace LiverpoolAjax.Controllers
 			{
 				using (EmployeesEntities db = new EmployeesEntities())
 				{
-					EmployeeTbl emp = db.EmployeeTbls.Where(x => x.EmployeeId == id).FirstOrDefault < EmployeeTbl();
+					EmployeeTbl emp = db.EmployeeTbls.Where(x => x.EmployeeId == id).FirstOrDefault<EmployeeTbl>();
 					db.EmployeeTbls.Remove(emp);
 					db.SaveChanges();
 				}
