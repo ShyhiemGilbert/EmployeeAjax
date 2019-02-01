@@ -17,7 +17,21 @@
     <div id="secondTab" class="tab-pane fade in">@Html.Action("AddOrEdit")</div>
 </div>
 
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
 
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        function activatejQueryTable() {
+            $("#employeeTable").DataTable();
+        }
+
+        $(function () {
+            activatejQueryTable();
+
+        });
+    </script>
 }

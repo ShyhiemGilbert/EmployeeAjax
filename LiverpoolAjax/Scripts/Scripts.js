@@ -23,7 +23,9 @@ function jQueryAjaxPost(form) {
                     $("#firstTab").html(response.html);
                     refreshAddNewTab($(form).attr('data-restUrl'), true);
                     //success Message
-                    $.notify(response.message,"success");
+                    $.notify(response.message, "success");
+                    if (typeof activatejQueryTable !== 'undefined' && $.isFunction(activatejQueryTable))
+                        activatejQueryTable();
                 } else {
                     //error Message
                     $.notify(response.message, "error");
@@ -86,6 +88,8 @@ function Delete(url) {
 
                     $("#firstTab").html(response.html);
                     $.notify(response.message, "warn");
+                    if (typeof activatejQueryTable !== 'undefined' && $.isFunction(activatejQueryTable))
+                        activatejQueryTable();
                 } else {
 
 
