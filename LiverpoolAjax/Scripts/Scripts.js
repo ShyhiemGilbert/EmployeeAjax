@@ -100,3 +100,20 @@ function Delete(url) {
     }
 }
 //Onclick Delete icon End
+
+//Spinner
+$(function () {
+    //Hides spinner when page is loaded
+    $("#loaderbody").addClass('hide');
+
+    //Shows spinner during Ajax Post
+    $(document).bind('ajaxStart', function() {
+            $("#loaderbody").removeClass('hide');
+        }).bind('ajaxStop', function() {
+        $("#loaderbody").addClass('hide');
+    });
+
+
+});
+
+//Spinner End
