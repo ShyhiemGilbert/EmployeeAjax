@@ -34,6 +34,13 @@ namespace LiverpoolAjax.Controllers
 		public ActionResult AddOrEdit(int id = 0)
 		{
 			EmployeeTbl emp = new EmployeeTbl();
+			if (id != 0)
+			{
+				using (EmployeesEntities db = new EmployeesEntities())
+				{
+					emp = db.EmployeeTbls.Where(x => x.EmployeeId == id).FirstOrDefault<EmployeeTbl>();
+				}
+			}
 			return View(emp);
 		}
 

@@ -41,6 +41,7 @@ function jQueryAjaxPost(form) {
 }
 //For  client side validation End
 
+//Allow input fields to reset once submitted
 function refreshAddNewTab(resetUrl, showViewTab) {
     $.ajax
     ({
@@ -51,6 +52,21 @@ function refreshAddNewTab(resetUrl, showViewTab) {
             $('ul.nav.nav-tabs a:eq(1)').html('Add New');
             if (showViewTab)
                 $('ul.nav.nav-tabs a:eq(0)').tab('show');
+        }
+    });
+}
+//Allow input fields to reset once submitted End
+
+//Onclick Edit icon
+function Edit(url) {
+    $.ajax
+    ({
+        type: 'GET',
+        url: url,
+        success: function (response) {
+            $("#secondTab").html(response);
+            $('ul.nav.nav-tabs a:eq(1)').html('Edit');
+            $('ul.nav.nav-tabs a:eq(1)').tab('show');
         }
     });
 }
